@@ -38,7 +38,7 @@
                         <h1>
                             <a href="<?php echo base_url(); ?>index.php/TrangChuController"
                                 style="color: #ba0000; font-family: 'Ubuntu', sans-serif;"><img
-                                    src="<?php echo base_url(); ?>img/logontt.png" alt=""
+                                    src="<?php echo base_url(); ?>img/nttshop.png" alt=""
                                     style="width: 100px; height: 60px;border-radius: 100%"> NTTShop</a>
                         </h1>
                     </div>
@@ -46,7 +46,6 @@
 
                 <div class="col-sm-4">
                     <?php 
-						// var_dump($this->session->userdata);
 						if($this->session->userdata('logged_in') === TRUE){
 							echo "
 											<div class='shopping-item' style='margin-left: 20px'>
@@ -100,7 +99,7 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active">
+                        <li>
                             <a href="<?php echo base_url(); ?>index.php/TrangChuController">Trang chủ</a>
                         </li>
                         <li>
@@ -116,96 +115,146 @@
         </div>
     </div>
     <!-- End mainmenu area -->
+
     <div class="product-big-title-area">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="product-bit-title text-center">
-                        <h2>Trang chủ</h2>
+                        <h2>Thông tin tài khoản</h2>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="slider-area">
-        <!-- Slider -->
-        <div class="block-slider block-slider4">
-            <ul class="" id="bxslider-home4">
-                <li>
-                    <img src="<?php echo base_url(); ?>img/iphone1.png" alt="Slide" />
-                    
-                </li>
-                <li>
-                    <img src="<?php echo base_url(); ?>img/iphone2.png" alt="Slide" />
-                    
-                </li>
-                <li>
-                    <img src="<?php echo base_url(); ?>img/iphone3.png" alt="Slide" />
-                    
-                </li>
-                <li>
-                    <img src="<?php echo base_url(); ?>img/header.png" alt="Slide" />
-                    
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!-- End slider area -->
-    <div class="maincontent-area">
+    <!-- End Page title area -->
+
+    <div class="single-product-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="latest-product">
-                        <h2 class="section-title">Sản phẩm mới nhất</h2>
-                        <div class="product-carousel">
-                            <?php foreach ($arrResult as $item) :?>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="<?php echo $item['hinhanh'] ?>" alt="" />
-                                    <div class="product-hover">
-                                        <a href="<?php echo base_url(); ?>index.php/CTSPController/?masp=<?php echo $item['masp'] ?>&mattsp=<?php echo $item['mattsp'] ?>"
-                                            class="add-to-cart-link"></i>
-                                            Xem chi tiết</a>
-
-                                    </div>
-                                </div>
-                                <h2>
-                                    <a
-                                        href="<?php echo base_url(); ?>index.php/CTSPController/?masp=<?php echo $item['masp'] ?>&mattsp=<?php echo $item['mattsp'] ?>"><?php echo $item['tensp'] ?></a>
-                                </h2>
-                                <div class="product-carousel-price">
-                                    <ins><?php echo $item['Gia'] ?> đ</ins> <del><?php echo $item['GiaKM'] ?></del> đ
-                                </div>
-                            </div>
-                            <?php endforeach ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End main content area -->
-
-    <div class="brands-area">
-        <div class="zigzag-bottom"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2 class="section-title" style="color: black">
-                        Danh sách các hãng
-                    </h2>
-                    <div class="brand-wrapper">
-                        <div class="brand-list">
-                            <img src="<?php echo base_url(); ?>img/brand1.png" alt="" />
-                            <img src="<?php echo base_url(); ?>img/realme.png" alt="" />
-                            <img src="<?php echo base_url(); ?>img/brand3.png" alt="" />
-                            <img src="<?php echo base_url(); ?>img/brand4.png" alt="" />
-                            
-                            <img src="<?php echo base_url(); ?>img/brand6.png" alt="" />
-                            <img src="<?php echo base_url(); ?>img/xiao.jpg" alt="" />
-                           
-                        </div>
+                    <div class="single-sidebar">
+                        <h2 class="sidebar-title">
+                            Chi tiết thông tin của bạn
+                        </h2>
+                        <hr />
+                        <?php 
+							// var_dump($this->session->userdata);
+							if($this->session->userdata('is_NV') === TRUE)
+							{
+								echo 
+								"
+								<form action='".base_url() ."index.php/TTTKController/SuaNV/?manv=".$arrResult[0]['MaNV']."' class='dangki' method='post' enctype='multipart/form-data'>
+									<div class='form-group'>
+										<label for='ten'>Mã nhân viên:</label>
+										<input name='manv' type='text' class='form-control' id='manv' value='".$arrResult[0]['MaNV']."' placeholder='Mã nhân viên'/>
+									</div>
+									<div class='form-group'>
+										<label for='ten'>Họ tên nhân viên:</label>
+										<input name='tennv' type='text' class='form-control' id='tennv' value='".$arrResult[0]['TenNV']."' placeholder='Tên nhân viên'/>
+									</div>
+									<div class='form-group'>
+										<label for='ten'>Ngày vào làm:</label>
+										<input name='ngayvl' type='date' class='form-control' id='ngayvl' value='".$arrResult[0]['NgayVL']."' placeholder='Ngày VL nhân viên'/>
+									</div>
+									<div class='form-group'>
+										<label for='sdt'>Lương :</label>
+										<input name='luong' type='text' class='form-control' id='luong' value='".$arrResult[0]['Luong']."' placeholder='Lương nhân viên'/>
+									</div>
+									<div class='form-group'>
+										<label for='sdt'>SDT :</label>
+										<input name='sdt' type='text' class='form-control' id='sdt' value='".$arrResult[0]['SDT']."' placeholder='SDT nhân viên'/>
+									</div>
+									<div class='form-group'>
+										<label for='email'>Email:</label>
+										<input name='email' type='email' class='form-control' id='email' value='".$arrResult[0]['Email']."' placeholder='Email nhân viên'/>
+									</div>
+									<div class='form-group'>
+										<label for='sdt'>CMND :</label>
+										<input name='cmnd' type='text' class='form-control' id='cmnd' value='".$arrResult[0]['CMND']."' placeholder='CMND nhân viên'/>
+									</div>
+									<div class='form-group'>
+										<label for='sdt'>Địa chỉ :</label>
+										<input name='diachi' type='text' class='form-control' id='diachi' value='".$arrResult[0]['DiaChi']."' placeholder='Địa chỉ nhân viên'/>
+									</div>
+									<div class='form-group'>
+										<label for='sdt'>Loại nhân viên :</label>
+										<input name='loainv' type='text' class='form-control' id='loainv' value='".$arrResult[0]['LoaiNV']."' placeholder='Loại nhân viên'/>
+									</div>
+									<p><b>Lưu ý</b>: Bạn muốn đổi mật khẩu? Hãy nhập các trường mật khẩu.</p>
+									<div class='form-group'>
+										<label for='pwd'>Mật khẩu:</label>
+										<input name='password' type='password' class='form-control' id='pwd' />
+									</div>
+									<div class='form-group'>
+										<label for='repassword1'>Nhập mật khẩu mới:</label>
+										<input name='repassword1' type='password' class='form-control' id='repassword' />
+									</div>
+									<div class='form-group'>
+										<label for='repassword'>Nhập lại mật khẩu mới:</label>
+										<input name='repassword2' type='password' class='form-control' id='repassword' />
+									</div>
+									<input type='submit' value='Cập nhật' class='btn btn-default' />
+								</form>
+								";
+							}
+							else
+							{
+								echo 
+								"
+								<form action='".base_url() ."index.php/TTTKController/SuaKH/?makh=".$arrResult[0]['MaKH']."' class='dangki' method='post' enctype='multipart/form-data'>
+									<div class='form-group'>
+										<label for='ten'>Mã khách hàng:</label>
+										<input name='makh' type='text' class='form-control' id='makh' value='".$arrResult[0]['MaKH']."' placeholder='Mã khách hàng'/>
+									</div>
+									<div class='form-group'>
+										<label for='ten'>Họ tên khách hàng:</label>
+										<input name='tenkh' type='text' class='form-control' id='tenkh' value='".$arrResult[0]['TenKH']."' placeholder='Tên khách hàng'/>
+									</div>
+									<div class='form-group'>
+										<label for='ten'>Giói tính:</label>
+										<input name='gioitinh' type='text' class='form-control' id='gioitinh' value='".$arrResult[0]['GioiTinh']."' placeholder='Giói tính khách hàng'/>
+									</div>
+									<div class='form-group'>
+										<label for='sdt'>SDT :</label>
+										<input name='sdt' type='text' class='form-control' id='sdt' value='".$arrResult[0]['SDT']."' placeholder='SDT khách hàng'/>
+									</div>
+									<div class='form-group'>
+										<label for='email'>Email:</label>
+										<input name='email' type='email' class='form-control' id='email' value='".$arrResult[0]['Email']."' placeholder='Email khách hàng'/>
+									</div>
+									<div class='form-group'>
+										<label for='sdt'>CMND :</label>
+										<input name='cmnd' type='text' class='form-control' id='cmnd' value='".$arrResult[0]['CMND']."' placeholder='CMND khách hàng'/>
+									</div>
+									<div class='form-group'>
+										<label for='sdt'>Địa chỉ :</label>
+										<input name='diachi' type='text' class='form-control' id='diachi' value='".$arrResult[0]['DiaChi']."' placeholder='Địa chỉ khách hàng'/>
+									</div>
+									<div class='form-group'>
+										<label for='sdt'>Loại khách hàng :</label>
+										<input name='loaikh' type='text' class='form-control' id='loaikh' value='".$arrResult[0]['LoaiKH']."' placeholder='Loại khách hàng'/>
+									</div>
+									<p><b>Lưu ý</b>: Bạn muốn đổi mật khẩu? Hãy nhập các trường mật khẩu.</p>
+									<div class='form-group'>
+										<label for='pwd'>Mật khẩu:</label>
+										<input name='password' type='password' class='form-control' id='pwd' />
+									</div>
+									<div class='form-group'>
+										<label for='repassword1'>Nhập mật khẩu mới:</label>
+										<input name='repassword1' type='password' class='form-control' id='repassword' />
+									</div>
+									<div class='form-group'>
+										<label for='repassword'>Nhập lại mật khẩu mới:</label>
+										<input name='repassword2' type='password' class='form-control' id='repassword' />
+									</div>
+									<input type='submit' value='Cập nhật' class='btn btn-default' />
+								</form>
+								";
+							}
+						?>
+                        <hr />
                     </div>
                 </div>
             </div>
@@ -241,12 +290,12 @@
             </div>
         </div>
     </div>
-
     <!-- Latest jQuery form server -->
     <script src="https://code.jquery.com/jquery.min.js"></script>
 
     <!-- Bootstrap JS form CDN -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
 
     <!-- jQuery sticky menu -->
     <script src="<?php echo base_url(); ?>js/owl.carousel.min.js"></script>
@@ -262,7 +311,5 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>js/bxslider.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/script.slider.js"></script>
 </body>
-
-
 
 </html>

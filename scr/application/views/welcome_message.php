@@ -78,7 +78,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
     <div id="container">
-        Tín Nguyễn this is my first codeigniter project
+       Trong Tin, this is my first codeigniter project
         <hr>
         Welcome to CodeIgniter
     </div>

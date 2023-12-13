@@ -1,3 +1,4 @@
 Tuần 1: Up đề cương chi tiết và tải Framework CodeIgniter.
 Tuần 2: Cài đặt thành công Framework CodeIgniter và thiết kế cơ sở dữ liệu.
         Thiết kế giao diện trang chủ, đăng kí và đăng nhập.
+Tuần 3: Thiết kế giao diện quản trị và giao diện sản phẩm, tiến hành viết báo cáo.        

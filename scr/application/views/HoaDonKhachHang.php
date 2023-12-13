@@ -46,7 +46,6 @@
 
                 <div class="col-sm-4">
                     <?php 
-						// var_dump($this->session->userdata);
 						if($this->session->userdata('logged_in') === TRUE){
 							echo "
 											<div class='shopping-item' style='margin-left: 20px'>
@@ -75,13 +74,14 @@
 							<div class='col-sm-1'>
 								<div class='shopping-item'>
 									<a href='".base_url()."index.php/GioHangController'>
-                <i class='fa fa-shopping-cart'></i>
-                </a>
-            </div>
-        </div>
-        ";
-        }
-        ?>
+									
+									<i class='fa fa-shopping-cart'></i>
+									</a>
+								</div>
+							</div>
+				";
+				}
+				?>
             </div>
         </div>
     </div>
@@ -100,14 +100,15 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active">
+                        <li>
                             <a href="<?php echo base_url(); ?>index.php/TrangChuController">Trang chủ</a>
                         </li>
                         <li>
                             <a href="<?php echo base_url(); ?>index.php/SanPhamBanController">Sản phẩm</a>
                         </li>
-                        <li><a href="<?php echo base_url(); ?>index.php/TinTucBanController">Tin tức</a></li>
-                        <li><a href="<?php echo base_url(); ?>index.php/HoaDonKhachHang">Hóa đơn đã
+                        <li><a href="<?php echo base_url(); ?>index.php/TinTucBanController">Tin tức</a>
+                        </li>
+                        <li class="active"><a href="<?php echo base_url(); ?>index.php/HoaDonKhachHang">Hóa đơn đã
                                 mua</a>
                         </li>
                     </ul>
@@ -116,98 +117,111 @@
         </div>
     </div>
     <!-- End mainmenu area -->
+    <!-- End mainmenu area -->
+
     <div class="product-big-title-area">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="product-bit-title text-center">
-                        <h2>Trang chủ</h2>
+                        <h2>Hóa đơn đã
+                            mua</h2>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="slider-area">
-        <!-- Slider -->
-        <div class="block-slider block-slider4">
-            <ul class="" id="bxslider-home4">
-                <li>
-                    <img src="<?php echo base_url(); ?>img/iphone1.png" alt="Slide" />
-                    
-                </li>
-                <li>
-                    <img src="<?php echo base_url(); ?>img/iphone2.png" alt="Slide" />
-                    
-                </li>
-                <li>
-                    <img src="<?php echo base_url(); ?>img/iphone3.png" alt="Slide" />
-                    
-                </li>
-                <li>
-                    <img src="<?php echo base_url(); ?>img/header.png" alt="Slide" />
-                    
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!-- End slider area -->
-    <div class="maincontent-area">
+    <!-- End Page title area -->
+
+    <div class="single-product-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="latest-product">
-                        <h2 class="section-title">Sản phẩm mới nhất</h2>
-                        <div class="product-carousel">
-                            <?php foreach ($arrResult as $item) :?>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="<?php echo $item['hinhanh'] ?>" alt="" />
-                                    <div class="product-hover">
-                                        <a href="<?php echo base_url(); ?>index.php/CTSPController/?masp=<?php echo $item['masp'] ?>&mattsp=<?php echo $item['mattsp'] ?>"
-                                            class="add-to-cart-link"></i>
-                                            Xem chi tiết</a>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Mã hóa đơn</th>
+                            <th scope="col">Tổng tiền</th>
+                            <th scope="col">Sản phẩm</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Ngày lập hóa đơn</th>
+                            <th scope="col">Tình trạng thanh toán</th>
+                            <th scope="col">Tình trạng giao hàng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php for($i=0;$i<count($arrResult); $i++) { ?>
+                        <tr>
+                            <th>
+                                <?php
+								if($arrResult[$i]['MaHD'] != $arrResult[0]['MaHD']) {
+									if($arrResult[$i]['MaHD'] != $arrResult[$i-1]['MaHD'])
+										echo $arrResult[$i]['MaHD'];
+								}
+								else {
+									if($i == 0)
+										echo $arrResult[$i]['MaHD'];
+								}
+								?>
+                            </th>
+                            <td><?php 
+								if($arrResult[$i]['MaHD'] != $arrResult[0]['MaHD']) {
+									if($arrResult[$i]['MaHD'] != $arrResult[$i-1]['MaHD'])
+										{
+											echo $arrResult[$i]['TongTienTT'];
+											echo " đ";
+										}
+								}
+								else {
+									if($i == 0)
+										{
+											echo $arrResult[$i]['TongTienTT'];
+											echo " đ";
+										}
+								}
+							?> </td>
+                            <td><?php echo $arrResult[$i]['tensp']?></td>
+                            <td><?php echo $arrResult[$i]['SoLuong']?></td>
+                            <td><?php echo $arrResult[$i]['NgayLapHD']?></td>
+                            <td>
+                                <?php
+								if($arrResult[$i]['MaHD'] != $arrResult[0]['MaHD']) {
+									if($arrResult[$i]['MaHD'] != $arrResult[$i-1]['MaHD'])
+										{
+											if($arrResult[$i]['TinhTrangTT'] == 0) echo "<i>Chưa thanh toán</i>"; else echo "<b>Đã thanh toán</b>" ;
+										}
+								}
+								else {
+									if($i == 0)
+										{
+											if($arrResult[$i]['TinhTrangTT'] == 0) echo "<i>Chưa thanh toán</i>"; else echo "<b>Đã thanh toán</b>" ;
+										}
+								}
+								?>
+                            </td>
+                            <td>
+                                <?php
+								if($arrResult[$i]['MaHD'] != $arrResult[0]['MaHD']) {
+									if($arrResult[$i]['MaHD'] != $arrResult[$i-1]['MaHD'])
+										{
+											if($arrResult[$i]['TinhTrangGH'] == 0) echo "<i>Chưa giao hàng</i>"; else echo "<b>Đã giao hàng</b>" ;
+										}
+								}
+								else {
+									if($i == 0)
+										{
+											if($arrResult[$i]['TinhTrangGH'] == 0) echo "<i>Chưa giao hàng</i>"; else echo "<b>Đã giao hàng</b>" ;
+										}
+								}
+								?>
+                            </td>
+                        </tr>
+                        <?php } ?>
 
-                                    </div>
-                                </div>
-                                <h2>
-                                    <a
-                                        href="<?php echo base_url(); ?>index.php/CTSPController/?masp=<?php echo $item['masp'] ?>&mattsp=<?php echo $item['mattsp'] ?>"><?php echo $item['tensp'] ?></a>
-                                </h2>
-                                <div class="product-carousel-price">
-                                    <ins><?php echo $item['Gia'] ?> đ</ins> <del><?php echo $item['GiaKM'] ?></del> đ
-                                </div>
-                            </div>
-                            <?php endforeach ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End main content area -->
-
-    <div class="brands-area">
-        <div class="zigzag-bottom"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2 class="section-title" style="color: black">
-                        Danh sách các hãng
-                    </h2>
-                    <div class="brand-wrapper">
-                        <div class="brand-list">
-                            <img src="<?php echo base_url(); ?>img/brand1.png" alt="" />
-                            <img src="<?php echo base_url(); ?>img/realme.png" alt="" />
-                            <img src="<?php echo base_url(); ?>img/brand3.png" alt="" />
-                            <img src="<?php echo base_url(); ?>img/brand4.png" alt="" />
-                            
-                            <img src="<?php echo base_url(); ?>img/brand6.png" alt="" />
-                            <img src="<?php echo base_url(); ?>img/xiao.jpg" alt="" />
-                           
-                        </div>
-                    </div>
-                </div>
+                    </tbody>
+                </table>
+                <hr>
+                <h4 class="text-center">Hết</h4>
             </div>
         </div>
     </div>
@@ -241,12 +255,12 @@
             </div>
         </div>
     </div>
-
     <!-- Latest jQuery form server -->
     <script src="https://code.jquery.com/jquery.min.js"></script>
 
     <!-- Bootstrap JS form CDN -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
 
     <!-- jQuery sticky menu -->
     <script src="<?php echo base_url(); ?>js/owl.carousel.min.js"></script>
@@ -262,7 +276,5 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>js/bxslider.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/script.slider.js"></script>
 </body>
-
-
 
 </html>

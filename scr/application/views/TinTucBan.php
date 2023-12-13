@@ -46,7 +46,6 @@
 
                 <div class="col-sm-4">
                     <?php 
-						// var_dump($this->session->userdata);
 						if($this->session->userdata('logged_in') === TRUE){
 							echo "
 											<div class='shopping-item' style='margin-left: 20px'>
@@ -75,13 +74,14 @@
 							<div class='col-sm-1'>
 								<div class='shopping-item'>
 									<a href='".base_url()."index.php/GioHangController'>
-                <i class='fa fa-shopping-cart'></i>
-                </a>
-            </div>
-        </div>
-        ";
-        }
-        ?>
+									
+									<i class='fa fa-shopping-cart'></i>
+									</a>
+								</div>
+							</div>
+				";
+				}
+				?>
             </div>
         </div>
     </div>
@@ -100,13 +100,14 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active">
+                        <li>
                             <a href="<?php echo base_url(); ?>index.php/TrangChuController">Trang chủ</a>
                         </li>
                         <li>
                             <a href="<?php echo base_url(); ?>index.php/SanPhamBanController">Sản phẩm</a>
                         </li>
-                        <li><a href="<?php echo base_url(); ?>index.php/TinTucBanController">Tin tức</a></li>
+                        <li class="active"><a href="<?php echo base_url(); ?>index.php/TinTucBanController">Tin tức</a>
+                        </li>
                         <li><a href="<?php echo base_url(); ?>index.php/HoaDonKhachHang">Hóa đơn đã
                                 mua</a>
                         </li>
@@ -116,96 +117,66 @@
         </div>
     </div>
     <!-- End mainmenu area -->
+    <!-- End mainmenu area -->
+
     <div class="product-big-title-area">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="product-bit-title text-center">
-                        <h2>Trang chủ</h2>
+                        <h2>Tin tức</h2>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="slider-area">
-        <!-- Slider -->
-        <div class="block-slider block-slider4">
-            <ul class="" id="bxslider-home4">
-                <li>
-                    <img src="<?php echo base_url(); ?>img/iphone1.png" alt="Slide" />
-                    
-                </li>
-                <li>
-                    <img src="<?php echo base_url(); ?>img/iphone2.png" alt="Slide" />
-                    
-                </li>
-                <li>
-                    <img src="<?php echo base_url(); ?>img/iphone3.png" alt="Slide" />
-                    
-                </li>
-                <li>
-                    <img src="<?php echo base_url(); ?>img/header.png" alt="Slide" />
-                    
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!-- End slider area -->
-    <div class="maincontent-area">
+    <!-- End Page title area -->
+
+    <div class="single-product-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="latest-product">
-                        <h2 class="section-title">Sản phẩm mới nhất</h2>
-                        <div class="product-carousel">
-                            <?php foreach ($arrResult as $item) :?>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="<?php echo $item['hinhanh'] ?>" alt="" />
-                                    <div class="product-hover">
-                                        <a href="<?php echo base_url(); ?>index.php/CTSPController/?masp=<?php echo $item['masp'] ?>&mattsp=<?php echo $item['mattsp'] ?>"
-                                            class="add-to-cart-link"></i>
-                                            Xem chi tiết</a>
-
-                                    </div>
-                                </div>
-                                <h2>
-                                    <a
-                                        href="<?php echo base_url(); ?>index.php/CTSPController/?masp=<?php echo $item['masp'] ?>&mattsp=<?php echo $item['mattsp'] ?>"><?php echo $item['tensp'] ?></a>
-                                </h2>
-                                <div class="product-carousel-price">
-                                    <ins><?php echo $item['Gia'] ?> đ</ins> <del><?php echo $item['GiaKM'] ?></del> đ
-                                </div>
-                            </div>
-                            <?php endforeach ?>
+                <?php foreach ($arrResult as $item) : ?>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <a href="<?php echo base_url(); ?>index.php/CTTinTucController/?id=<?php echo $item['id'] ?>"><img
+                                src="<?php echo $item['hinhanh'] ?>" alt="hình ảnh bài viết" /></a>
+                        <div class="caption">
+                            <a
+                                href="<?php echo base_url(); ?>index.php/CTTinTucController/?id=<?php echo $item['id'] ?>">
+                                <h3 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                    <?php echo $item['tieude'] ?></h3>
+                            </a>
+                            <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                <?php echo $item['mota'] ?>
+                            </p>
+                            <b>
+                                <p>Tác giả: <?php echo $item['nguoidang'] ?></p>
+                            </b>
+                            <b>
+                                <p>Xuất bản: <?php echo $item['ngaydang'] ?></p>
+                            </b>
+                            <p>
+                                <a href="<?php echo base_url(); ?>index.php/CTTinTucController/?id=<?php echo $item['id'] ?>"
+                                    class="btn btn-primary" role="button">Xem ngay</a>
+                            </p>
                         </div>
                     </div>
                 </div>
+                <?php endforeach ?>
             </div>
-        </div>
-    </div>
-    <!-- End main content area -->
-
-    <div class="brands-area">
-        <div class="zigzag-bottom"></div>
-        <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="section-title" style="color: black">
-                        Danh sách các hãng
-                    </h2>
-                    <div class="brand-wrapper">
-                        <div class="brand-list">
-                            <img src="<?php echo base_url(); ?>img/brand1.png" alt="" />
-                            <img src="<?php echo base_url(); ?>img/realme.png" alt="" />
-                            <img src="<?php echo base_url(); ?>img/brand3.png" alt="" />
-                            <img src="<?php echo base_url(); ?>img/brand4.png" alt="" />
-                            
-                            <img src="<?php echo base_url(); ?>img/brand6.png" alt="" />
-                            <img src="<?php echo base_url(); ?>img/xiao.jpg" alt="" />
-                           
-                        </div>
+                    <div class="product-pagination text-center">
+                        <nav>
+                            <ul class="pagination">
+                                <?php for ($i=0 ; $i < $SoTrang ; $i++ ) : ?>
+                                <li class=""><a
+                                        href="<?php echo base_url() ?>index.php/TinTucBanController/index/<?php echo $i+1 ?>"><?php echo $i+1 ?></a>
+                                </li>
+                                <?php endfor?>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -241,12 +212,12 @@
             </div>
         </div>
     </div>
-
     <!-- Latest jQuery form server -->
     <script src="https://code.jquery.com/jquery.min.js"></script>
 
     <!-- Bootstrap JS form CDN -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
 
     <!-- jQuery sticky menu -->
     <script src="<?php echo base_url(); ?>js/owl.carousel.min.js"></script>
@@ -262,7 +233,5 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>js/bxslider.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/script.slider.js"></script>
 </body>
-
-
 
 </html>
