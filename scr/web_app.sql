@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 13, 2023 lúc 09:48 AM
+-- Thời gian đã tạo: Th12 31, 2023 lúc 04:52 AM
 -- Phiên bản máy phục vụ: 10.1.38-MariaDB
 -- Phiên bản PHP: 7.3.2
 
@@ -80,7 +80,9 @@ CREATE TABLE `binhluan` (
 --
 
 INSERT INTO `binhluan` (`MaBL`, `MaSP`, `MaTTSP`, `MaKH`, `NoiDung`) VALUES
-(15, 1, 1, 15, 'sản phẩm tốt');
+(15, 1, 1, 15, 'sản phẩm tốt'),
+(16, 1, 20, 16, 'Sản phẩm rất tốt'),
+(17, 33, 48, 16, 'Sản phẩm tốt');
 
 -- --------------------------------------------------------
 
@@ -117,7 +119,10 @@ INSERT INTO `cthd` (`MaHD`, `MaSP`, `mattsp`, `SoLuong`, `ThanhTien`) VALUES
 (102, 1, 20, 1, 8900000),
 (103, 2, 3, 1, 17000000),
 (104, 1, 20, 1, 10390000),
-(105, 1, 20, 1, 10390000);
+(105, 1, 20, 1, 10390000),
+(106, 1, 20, 1, 10390000),
+(106, 14, 28, 1, 16000000),
+(107, 1, 20, 2, 20780000);
 
 --
 -- Bẫy `cthd`
@@ -422,7 +427,9 @@ INSERT INTO `giaohang` (`MaHD`, `MaNV`, `TinhTrangGH`) VALUES
 (102, 5, 1),
 (103, 4, 1),
 (104, 5, 1),
-(105, 4, 1);
+(105, 4, 1),
+(106, 5, 1),
+(107, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -483,7 +490,9 @@ INSERT INTO `hoadon` (`MaHD`, `MaKH`, `MaKM`, `TongTienTT`, `NgayLapHD`, `TinhTr
 (102, 16, 1, 8900000, '2023-11-25', 1, 8900000, 0),
 (103, 16, 2, 14960000, '2023-11-26', 1, 14960000, 0),
 (104, 17, 8, 8935400, '2023-11-30', 1, 8935400, 0),
-(105, 16, 1, 10390000, '2023-12-06', 1, 10390000, 0);
+(105, 16, 1, 10390000, '2023-12-06', 1, 10390000, 0),
+(106, 16, 1, 26390000, '2023-12-23', 1, 26390000, 0),
+(107, 1, 1, 20780000, '2023-12-31', 1, 20780000, 0);
 
 --
 -- Bẫy `hoadon`
@@ -550,14 +559,16 @@ CREATE TABLE `khachhang` (
 --
 
 INSERT INTO `khachhang` (`MaKH`, `TenKH`, `GioiTinh`, `SDT`, `Email`, `MatKhau`, `CMND`, `DiaChi`, `LoaiKH`) VALUES
-(1, 'Nguyễn Trọng Tín', 'Nam', '000011112222', 'tin@gmail.com', '123456', '123', 'Trà Vinh', 'Thân thiết'),
+(1, 'Nguyễn Trọng Tín', 'Nam', '000011112222', 'tin@gmail.com', '123', '123', 'Trà Vinh', 'Thân thiết'),
 (2, 'Nguyễn Đăng Khoa', 'Nam', '033112223', 'dangkhoa@gmail.com', '123456', '123', 'Hòa Minh', 'Bình thường'),
 (4, 'Đỗ Thị Mỹ Duyên', 'Nữ', '09811112223', 'myduyen@gmail.com', '123456', '123', 'Cổ Chiên', 'Bình thường'),
 (13, 'Lâm Chí Nhân', 'Nam', '01231241231', 'nhan@gmail.com', 'nhan', '231242134', 'Ba Si', 'Bình thường'),
 (14, 'Nguyễn Nhất Sang', 'Nam', '0332845981', 'sang@gmail.com', '123123', '42121321', 'Tân An', 'Bình thường'),
 (15, 'Lê Dương Nhựt Thoại', 'Nam', '0123124142', 'thoai@gmail.com', '123', '231242321', 'Long Đức', 'Bình thường'),
 (16, 'Nguyễn Trọng Tín', 'Nam', '0817052342', 'tintv135@gmail.com', '123', '1234567890', 'Phường 1, Trà Vinh', 'Thân thiết'),
-(17, 'sang', 'Nam', '123123', 'sangtv123@gmail.com', '123', '123', 'Tân An', 'Bình thường');
+(17, 'sang', 'Nam', '123123', 'sangtv123@gmail.com', '123', '123', 'Tân An', 'Bình thường'),
+(18, 'Thoại', 'Nam', '1234567', 'cut@gmail.com', '123', '12344', 'Trà Vinh', 'Bình thường'),
+(19, 'Tín', 'Nam', '1234567', 'ntt@gmail.com', '123', '12344', 'Trà Vinh', 'Bình thường');
 
 -- --------------------------------------------------------
 
@@ -603,9 +614,9 @@ CREATE TABLE `khuyenmai` (
 --
 
 INSERT INTO `khuyenmai` (`MaKM`, `SoPTKM`, `TuNgay`, `DenNgay`, `TTienToiThieu`) VALUES
-(1, 10, '2023-11-01', '2022-01-30', 5000000),
-(2, 12, '2023-10-20', '2023-12-29', 2000000),
-(7, 9, '2023-11-26', '2024-01-01', 10000000),
+(1, 2, '2023-11-01', '2023-01-30', 200000),
+(2, 15, '2023-10-20', '2023-12-29', 500000),
+(7, 10, '2023-11-26', '2024-01-01', 1000000),
 (8, 14, '2023-11-30', '2024-12-31', 0);
 
 -- --------------------------------------------------------
@@ -682,7 +693,8 @@ INSERT INTO `nhanvien` (`MaNV`, `TenNV`, `NgayVL`, `Luong`, `SDT`, `Email`, `Mat
 (4, 'La Diễn Kha', '2023-11-20', 7000000, '0339493345', 'lakha@gmail.com', '44444444', '0445310024', 'Phường 1, Trà Vinh', 'Giao hàng'),
 (5, 'Lâm Ngọc Tài', '2023-12-02', 6000000, '0945600342', 'lnt@gmail.com', '55555555', '0542247211', 'Phước Hảo', 'Giao hàng'),
 (6, 'Nguyễn Hữu Thắng', '2023-12-21', 40000000, '0123124123', 'thang@gm.com', 'thang', '123124213', 'ABC', 'Quản lý'),
-(9, 'Tín Nguyễn', '2023-11-23', 10000000, '0817052342', 'tintv135@gmail.com', '11111111', '1234567', 'Trà Vinh', 'Quản lý');
+(9, 'Tín Nguyễn', '2023-11-23', 10000000, '0817052342', 'tintv135@gmail.com', '11111111', '1234567', 'Trà Vinh', 'Quản lý'),
+(10, 'Tín ', '2023-12-24', 5000000, '0823770071', 'ntt@gmail.com', '11111111', '12333', 'Trà Vinh', 'Bán hàng');
 
 -- --------------------------------------------------------
 
@@ -746,7 +758,13 @@ INSERT INTO `sanpham` (`masp`, `tensp`, `hinhanh`, `mota`, `maloaisp`, `math`) V
 (25, 'OPPO A78', 'http://localhost/nttshop/fileupload/OPPO A78.jpg', 'OPPO A78', 1, 5),
 (26, 'OPPO A17K ', 'http://localhost/nttshop/fileupload/OPPO A17K.jpg', 'OPPO A17K ', 1, 5),
 (27, 'LG G7 ThinQ', 'http://localhost/nttshop/fileupload/LGg7.jpg', 'LG G7 ThinQ', 1, 6),
-(28, 'LG Velvet ', 'http://localhost/nttshop/fileupload/LG Velvet.jpg', 'LG Velvet ', 1, 6);
+(28, 'LG Velvet ', 'http://localhost/nttshop/fileupload/LG Velvet.jpg', 'LG Velvet ', 1, 6),
+(29, 'VIVO Y36', 'http://localhost/nttshop/fileupload/vivo Y36.png', 'VIVO Y36', 1, 7),
+(30, 'VIVO V29e 5G', 'http://localhost/nttshop/fileupload/VIVO V29e 5G.jpg', 'VIVO V29e 5G', 1, 7),
+(31, 'Sony Xperia 5 III', 'http://localhost/nttshop/fileupload/Sony Xperia 5 III.jpg', 'Sony Xperia 5 III', 1, 8),
+(32, 'Sony Xperia 5', 'http://localhost/nttshop/fileupload/Sony Xperia 5.jpg', 'Sony Xperia 5', 1, 8),
+(33, 'Nokia G11 Plus', 'http://localhost/nttshop/fileupload/Nokia G11 Plus.jpg', 'Nokia G11 Plus', 1, 9),
+(34, 'Realme C53', 'http://localhost/nttshop/fileupload/Realme C53.jpg', 'Realme C53', 1, 10);
 
 -- --------------------------------------------------------
 
@@ -780,9 +798,9 @@ INSERT INTO `thongtinsp` (`mattsp`, `masp`, `MaKho`, `Gia`, `GiaKM`, `SoLuong`, 
 (9, 7, 2, 8499000, 7490000, 20, 'Đen', 8, 127, 5000, 6.1, '13', '48', 'Dimensity 1080 '),
 (10, 8, 7, 5690000, 4790000, 30, 'Vàng', 4, 64, 4000, 6, '8', '13', 'Snapdragon 625'),
 (11, 9, 3, 5000000, 4500000, 13, 'Đồng', 2, 32, 3250, 4.5, '8', '12', 'Snapdragon 425'),
-(20, 1, 1, 11990000, 10390000, 15, 'Trắng', 4, 64, 3110, 6, '12', '12', 'A13 Bionic'),
+(20, 1, 1, 11990000, 10390000, 12, 'Trắng', 4, 64, 3110, 6, '12', '12', 'A13 Bionic'),
 (26, 13, 2, 7500000, 7000000, 19, 'Xanh', 8, 64, 5000, 6, '13', '12', 'Snapdragon 655'),
-(28, 14, 6, 14900000, 16000000, 10, 'Hồng', 8, 127, 4000, 6, '10', '48', 'Exynos 990'),
+(28, 14, 6, 14900000, 16000000, 9, 'Hồng', 8, 127, 4000, 6, '10', '48', 'Exynos 990'),
 (29, 14, 4, 30000000, 16990000, 12, 'Xanh', 8, 127, 5000, 6, '40', '108', 'Snapdragon 8 Gen 1'),
 (30, 15, 7, 22990000, 18490000, 11, 'Đỏ', 6, 127, 3279, 6, '12', '12', 'A15 Bionic 6 nhân'),
 (31, 16, 5, 19890000, 23990000, 24, 'Đen Nhám', 8, 127, 7538, 11, '13', '13', 'Apple M2 '),
@@ -795,7 +813,13 @@ INSERT INTO `thongtinsp` (`mattsp`, `masp`, `MaKho`, `Gia`, `GiaKM`, `SoLuong`, 
 (40, 25, 6, 7500000, 6990000, 11, 'Xanh ', 8, 64, 5000, 6, '8', '48', 'Snapdragon 680'),
 (41, 26, 2, 3290000, 2990000, 12, 'Vàng ', 3, 64, 5000, 6, '5', '8', 'MediaTek Helio G35'),
 (42, 27, 3, 13500000, 11900000, 5, 'Bạc', 4, 64, 3000, 6, '8', '16', 'Snapdragon 845'),
-(43, 28, 5, 11990000, 9999000, 10, 'Đen', 8, 127, 4300, 6.8, '16', '48', 'Snapdragon 765G');
+(43, 28, 5, 11990000, 9999000, 10, 'Đen', 8, 127, 4300, 6.8, '16', '48', 'Snapdragon 765G'),
+(44, 29, 3, 5900000, 5490000, 11, 'Xanh', 8, 127, 5000, 6.1, '16', '50', 'Snapdragon 680'),
+(45, 30, 1, 9990000, 9690000, 12, 'Đen', 12, 127, 4800, 6.1, '20', '48', 'Snapdragon 695 5G'),
+(46, 31, 7, 8950000, 7950000, 21, 'Xám xanh', 8, 127, 4500, 6.1, '8', '24', 'Snapdragon 888 5G'),
+(47, 32, 2, 4950000, 3950000, 5, 'Trắng', 6, 64, 3140, 6.1, '8', '16', 'Snapdragon 855'),
+(48, 33, 5, 3390000, 2390000, 12, 'Đen Nhám', 3, 32, 5000, 6, '8', '48', 'Unisoc T606'),
+(49, 34, 6, 4290000, 3890000, 10, 'Vàng', 6, 127, 5000, 6.1, '8', '48', ' Unisoc Tiger T612');
 
 -- --------------------------------------------------------
 
@@ -993,7 +1017,7 @@ ALTER TABLE `tintuc`
 -- AUTO_INCREMENT cho bảng `binhluan`
 --
 ALTER TABLE `binhluan`
-  MODIFY `MaBL` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `MaBL` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT cho bảng `hinhanhlq`
@@ -1005,13 +1029,13 @@ ALTER TABLE `hinhanhlq`
 -- AUTO_INCREMENT cho bảng `hoadon`
 --
 ALTER TABLE `hoadon`
-  MODIFY `MaHD` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `MaHD` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT cho bảng `khachhang`
 --
 ALTER TABLE `khachhang`
-  MODIFY `MaKH` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `MaKH` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT cho bảng `kho`
@@ -1041,7 +1065,7 @@ ALTER TABLE `nhacc`
 -- AUTO_INCREMENT cho bảng `nhanvien`
 --
 ALTER TABLE `nhanvien`
-  MODIFY `MaNV` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `MaNV` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `phieunhap`
@@ -1053,13 +1077,13 @@ ALTER TABLE `phieunhap`
 -- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `masp` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `masp` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT cho bảng `thongtinsp`
 --
 ALTER TABLE `thongtinsp`
-  MODIFY `mattsp` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `mattsp` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT cho bảng `thuonghieu`
