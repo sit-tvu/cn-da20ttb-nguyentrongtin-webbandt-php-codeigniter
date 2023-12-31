@@ -3,4 +3,4 @@ Tuần 2: Cài đặt thành công Framework CodeIgniter và thiết kế cơ s�
         Thiết kế giao diện trang chủ, đăng kí và đăng nhập.
 Tuần 3: Thiết kế giao diện quản trị và giao diện sản phẩm, tiến hành viết báo cáo.        
 Tuần 4: Hoàn thành các chức năng của website và tiến hành chỉnh sửa hoàn thiện website.
-        Hoàn thành báo cáo.
+        Hoàn thành bài báo cáo.
