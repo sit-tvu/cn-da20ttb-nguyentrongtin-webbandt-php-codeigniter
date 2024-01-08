@@ -4,3 +4,7 @@
 ## Sau đó mở file application/config/database.php để chỉnh lại cấu hình database đúng theo tên đã đặt khi tạo mới database (ở đây em đặt tên là web_app).
 ## Sau đó mở file application/config/config.php để chỉnh lại cho đúng tên của folder (ở đây folder em đặt là nttshop).
 ## Sau đó truy cập vào link http://localhost/nttshop/index.php/TrangChuController để truy cập vào trang chủ.
+### Thông tin liên lạc: 
+SĐT: 0817052342
+Email: tintv135@gmail.com
+                
